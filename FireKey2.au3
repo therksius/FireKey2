@@ -8,7 +8,7 @@
 #AutoIt3Wrapper_UseX64=y
 #AutoIt3Wrapper_Res_Comment=Manage your computer with hotkeys
 #AutoIt3Wrapper_Res_Description=FireKey2
-#AutoIt3Wrapper_Res_Fileversion=2.2.1.5
+#AutoIt3Wrapper_Res_Fileversion=2.2.2.0
 #AutoIt3Wrapper_Res_Fileversion_AutoIncrement=p
 #AutoIt3Wrapper_Res_Icon_Add=5_editor.ico
 #AutoIt3Wrapper_Res_Icon_Add=6_keyboard.ico
@@ -20,6 +20,7 @@
 #EndRegion ;**** Directives created by AutoIt3Wrapper_GUI ****
 #cs
 --- Version history ---
+2.2.2.0 - Github Release
 2.2.1.4 - Fixed WM_CONTEXTMENU to only apply to listview.
 2.2.1.3 - Changed "Execute" context menu option to "Test".
 2.2.1.0 - Fixed "Run As Admin" option in run command (previously unimplemented).
