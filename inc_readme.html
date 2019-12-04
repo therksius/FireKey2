@@ -1,0 +1,265 @@
+<html>
+<head>
+	<title>FireKey2 ReadMe</title>
+	<style>
+	body { font-family: sans-serif; }	
+	.button { font-family: monospace; font-weight: bold; border: solid 1px; padding: 0 1em; }
+	.label { font-family: monospace; font-style: italic; }
+	.combobox { font-family: monospace; border: dashed; border-width: 1px 0; padding: 0 1em; }
+	.wintitle { font-weight: bold; }
+	.indent { padding-left: 1em; }
+	li { margin-bottom: 0.5em; }
+	</style>
+</head>
+<body>
+
+<h1>FireKey2</h1>
+<h5>Version 2.2.1.0</h5>
+
+<h4>Create system wide hotkeys to run programs or perform other tasks.</h4>
+
+<p>
+	Created by Rob Saunders (<a href="mailto:rob@therks.com">rob@therks.com</a> / <a href="http://therks.com">http://therks.com</a>)<br />
+	Written in the AutoIt (v3) scripting language (<a href="http://www.autoitscript.com">http://www.autoitscript.com</a>)
+</p>
+
+<hr />
+
+<h4>Contents:</h4>
+<ol type="i">
+	<li><a href="#create1">Creating a hotkey (quick and easy)</li>
+	<li><a href="#create2">Creating a hotkey (detailed explanation)</li>
+	<li><a href="#options">Options menu</li>
+	<li><a href="#limit">Limitations</li>
+	<li><a href="#history">Version History</li>
+	<li><a href="#thanks">Special thanks</li>
+	<li><a href="#background">Background</li>
+</ol>
+
+<hr />
+
+<a name="create1"></a><h4>Creating a hotkey (quick and easy):</h4>
+
+<ol>
+	<li>Double click the FireKey2 icon in the system tray.</li>
+	<li>Click <span class="button">Add HotKey</span></li>
+	<li>Click <span class="button">Choose</span> and choose a key combination.</li>
+	<li>In the Path field, enter the path to file you want to run.</li>
+	<li>Click <span class="button">OK</span>.</li>
+</ol>
+
+<hr />
+
+<a name="create2"></a><h4>Creating a hotkey (detailed explanation):</h4>
+
+<ol>
+	<li>Double click the FireKey2 icon in your system tray (the area near the clock). The main FireKey2 window will appear.</li>
+
+	<li>Click the <span class="button">Add HotKey</span> button at the bottom of the window. The <span class="wintitle">Add/Edit HotKey</span> window will appear.</li>
+
+	<li>Click the <span class="button">Choose</span> button at the top of the window and decide what key combination you'd like to use.<br />
+	If the <span class="button">Detect Key</span> button is selected then the program will try to auto select whatever key combination you press (some combinations cannot be detected).<br />
+	Otherwise, click the buttons for each modifier (Win, Alt, etc) you want to use and then choose the base key from the drop down list.<br />
+	<div class="indent">
+		<span class="example">For example</span>, if you want to use the number pad asterisk (*) plus the Windows and Control keys you would click <span class="button">Win</span>,	<span class="button">Ctrl</span>, and then choose <span class="combobox">NumPad Multiply</span> from the list.<br />
+		Then click <span class="button">OK</span>.<br />
+	</div>
+
+	Now the key combination you chose should be displayed in the box at the top of the window.<br />
+	<p><strong>Note:</strong> Some hotkey combinations (Win+R, Win+E, etc) will be in use and blocked by Windows or other applications.<br />
+	If the program detects you have chosen a blocked hotkey it will warn you and you may choose another.<br />
+	<strong>Alternatively</strong>, you can try to use the virtual key method which is explained further below.</p>
+	</li>
+
+	<li>If you are worried about accidentally pressing this hotkey and doing something you don't want (like shut down your computer or start a slow program) then you can check the box for <br />
+	<span class="label">Confirm before performing function</span> and you will be shown a confirmation dialog when you press the hotkey.
+	This is recommended for functions like <span class="combobox">Hibernate</span> or <span class="combobox">Shutdown</span>.</li>
+
+	<li>Sometimes you may want to use a hotkey combination that is already in use by another program or by Windows itself. In this case try checking off the <span class="label">Use virtual key hook</span> box as you<br />
+	define your hotkey. Most hotkeys will work using this method but the program may have issues if you press the key repeatedly, or if something makes the program delay (like a confirmation <br />
+	prompt) and the original hotkey may leak through. Unfortunately I have no fix for this.<br />
+	<span class="indent"><em>ie:</em> If you set a virtual hotkey to Win+E, then spam the hotkey, Windows Explorer will probably open a few times.</span></li>
+
+	<li>Now choose the function you want to execute when you press your hotkey. There are a variety of functions here like volume adjust (raise/lower, mute), window manipulation (maximize, minimize),<br />
+	power options (log off, shutdown, hibernate) and some functions specific for FireKey (open/toggle the key list, shutdown FireKey).</li>
+
+	<li>Some function details:
+		<ol type="a">
+			<li>If you want to launch a program or open a file/folder, choose <span class="combobox">Run</span>.<br />
+			In the <span class="label">Path</span> field below, type the location of whatever you want to run, or click one of the buttons on the end to browse for it.<br />
+			<span class="indent">&middot; If you want to browse for a file click the first button, if you want to browse for a folder click the second.</span><br />
+
+			If you are launching a program and not a file then any command line options you want to specify must be entered in the <span class="label">Parameters</span> field.<br />
+			The working directory, or "Start in" folder, can be specified in the <span class="label">Working Dir</span> field, and the <span class="label">Window</span> drop down list will allow you to select <br />
+			how the window should appear when the program is launched (not all programs respect this setting).</li>
+
+			<li>If you want to raise, lower or mute the system volume, choose <span class="combobox">Volume Adjust</span>.<br />
+			If you want to adjust the volume, check the <span class="label">Amount</span> selector below and then enter how much you want the volume to change on each key press.<br />
+			The amount is based on 100 being full volume and 0 being silent. So if you want to go from full volume to silence in 4 key presses then you could enter -25.<br />
+
+			If you want a visible meter that shows the volume level whenever the adjustment is made you can check the <span class="label">Display Meter</span> box.<br />
+
+			If you just want to toggle muting the volume then check the <span class="label">Toggle Mute</span> selector.</li>
+		</ol>
+	</li>
+
+	<li>When you have finished selecting and configuring the function for your hotkey click <span class="button">OK</span> and your hotkey will now be usable and you will be returned to the key list window.</li>
+</ol>
+
+<hr />
+
+<a name="options"></a><h4>Options menu:</h4>
+
+<ul>
+	<li><i>Version info</i></li>
+	<li><u>V</u>iew ReadMe (F1)<br />
+		Opens this file.</li>
+	<li><u>R</u>eload Keys (F5)<br />
+		Manually reload the hotkey data file.</li>
+	<li>More <u>O</u>ptions
+	<ul>
+		<li>Run on <u>L</u>ogin<br />
+			Add a shortcut to the Startup folder.</li>
+		<li>Confirm Sh<u>u</u>tdown<br />
+			Show a prompt when you exit FireKey via menus.</li>
+		<li>Confirm Key <u>D</u>elete<br />
+			Show a prompt when you delete hotkeys.</li>
+		<li><u>R</u>emember Window Size/Position<br />
+			Remember the main window's position when exited and restore it when reopening the program.</li>
+		<li>Show Tray <u>I</u>con<br />
+			Show the FireKey icon in the system tray and do not exit when closing the main window.</li>
+		<li>Warn If Key Is <u>T</u>aken<br />
+			Show a warning in the key editor if a hotkey is in use when created.</li>
+		<li>Show Tray <u>T</u>ip On Key Error<br />
+			Display a popup on launch if a hotkey is in use by another application.</li>
+		<li>Show <u>S</u>plash Screen<br />
+			Display the splash screen on launch.</li>
+		<li>Set <u>P</u>riority<br />
+			Set the main program priority.<br />
+				<span class="indent">Low is the default, and recommended, but if the program or your hotkeys seem unresponsive then you can try a higher priority.</span></li>
+		<li>Advanced <u>O</u>ptions
+		<ul>
+			<li><i>AutoIt version compiled with</i></li>
+			<li>View Source <u>C</u>ode<br />
+				Opens a text file with the source code.</li>
+			<li>View Error <u>L</u>og<br />
+				Opens the error log for viewing.</li>
+			<li>View Data <u>F</u>older<br />
+				Opens the data file folder (config files, error log, etc).</li>
+			<li>Delete All FireKey Data<br />
+				Delete all FireKey2 config data, use this if you are removing the program or just want a clean start.</li>
+		</ul>
+		</li>
+	<li>E<u>x</u>it (Alt+X)<br />
+		Shuts down FireKey - this will disable your hotkeys.</li>
+	</ul>
+	</li>
+</ul>
+
+<hr />
+
+<a name="limit"></a><h4>Limitations:</h4>
+
+<p>The number pad Enter key cannot be differentiated from the normal Enter key so any hotkey that uses Enter can be triggered by both the number pad and main Enter keys.</p>
+
+<p>The following keys/combos cannot be used:</p>
+<ul>
+	<li>Ctrl+Alt+Del - You can use the virtual key option and the command will execute but the normal Windows menu will appear first.</li>
+	<li>Two or more "base" keys (Q+W, F2+D, Down+Delete+Enter, etc).</li>
+	<li>Any modifiers (Alt/Ctrl/Shift/Win) without a "base" key.</li>
+</ul>
+
+<hr />
+
+<a name="history"></a><h4>Version History:</h4>
+
+<ul>
+	<li>2.2.1.0</li>
+	<ul>
+		<li>Fixed "Run As Admin" option in run command (previously unimplemented).</li>
+		<li>Fixed "Disable Key" size (wasn't big enough)</li>
+		<li>Fixed "No Tray Icon" option for main program (was ignoring the option).</li>
+		<li>Fixed window size memory and added option to enable/disable.</li>
+	</ul>
+	<li>2.2.0.5</li>
+	<ul>
+		<li>Changed config directory.</li>
+	</ul>
+	<li>2.2.0.4</li>
+	<ul>
+		<li>Set minimum window size for Add/Edit window.
+		<li>Fixed "Disable key" checkbox movement (sticks to bottom of window now).
+		<li>Removed cmd line param for source since it's provided in a menu option.
+	</ul>
+	<li>2.2.0.3</li>
+	<ul>
+		<li>Removed tooltip on file run.
+		<li>Changed priority magic numbers to $PROCESS_* constants.
+	</ul>
+	<li>2.2.0.2</li>
+	<ul>
+		<li>Red color for disabled hotkeys.
+		<li>Changed item details for in-use hotkeys.
+	</ul>
+	<li>2.2.0.1</li>
+	<ul>
+		<li>Removed 64 bit auto-run.
+		<li>Changed compiled names: 32 bit is now "FireKey (x86).exe" and 64 bit is "FireKey.exe".
+	</ul>
+	<li>2.2.0.0</li>
+	<ul>
+		<li>Added disable key option.
+		<li>Added accelerators to key list context menu.
+	</ul>
+	<li>2.1.1.0</li>
+	<ul>
+		<li>Fixed bug with saving/restoring window position.
+		<li>Changed window fade function from DllCall to UDF.
+	</ul>
+	<li>2.1.0.7</li>
+	<ul>
+		<li>Rearranged Options menu.
+	</ul>
+	<li>2.1.0.6</li>
+	<ul>
+		<li>AutoIt line now has a full edit box (merged to single line on execution).
+		<li>Main window size/pos is now remembered.
+		<li>Listview is focused after key add/edit.
+		<li>Default sort keys in order of creation/update.
+	</ul>
+	<li>2.1.0.5</li>
+	<ul>
+		<li>Changes to _FileGetIcon, added new icons for "AutoIt commands".
+	</ul>
+	<li>2.1.0.4</li>
+	<ul>
+		<li>Fixed double click working in listview.</li>
+	</ul>
+	<li>2.1.0.3</li>
+	<ul>
+		<li>Added context menu trigger for listview using WM_CONTEXTMENU (For Shift+F10).</li>
+	</ul>
+</ul>
+
+<hr />
+
+<a name="thanks"></a><h4>Special thanks:</h4>
+<ul>
+	<li>The AutoIt developers.</li>
+	<li>Erik Pilsits (wraithdu) for "_AudioEndpointVolume.au3" (<a href="https://www.autoitscript.com/forum/topic/84834-control-vista-master-volume/">Link</a>) which provides volume control in Vista+ systems.</li>
+	<li>Austin Beer (asbeer450) for "_SoundGetSetQuery.au3" (Link no longer available) which provides volume control in pre-Vista systems.</li>
+	<li>Yashied for "_Yashied_HotKey_21b.au3" (<a href="https://www.autoitscript.com/forum/topic/90492-hotkey-udf/">Link</a>) which provides the virtual key hotkey method.</li>
+</ul>
+
+<hr />
+
+<a name="background"></a><h4>Background:</h4>
+
+<p>I wrote the first FireKey for myself to replace a program called WinKey. WinKey was nice, but limited in that it only had support for a preset list of key combinations.<br />
+	<span class="indent">For example, you couldn't create hotkeys with punctuation or the Alt key. FireKey allowed just about any combination of modifiers and a base key.</span><br />
+I originally started rewriting FireKey back in late 2006 but kept losing interest and motivation and instead patched in hacky fixes to the original code.<br />
+I worked on it off and on for a while and finally "finished" it at work during a rather long and boring night shift.<br />
+I still tinker with it now and then, but there's not much left I can do with it.</p>
+
+</body>
+</html>
